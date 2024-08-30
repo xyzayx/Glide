@@ -1,0 +1,30 @@
+
+/*This isnt loaded directly. its conditionally loaded by checking if os is linux in js.*/
+
+.program .section.input::-webkit-scrollbar {
+   display: none;
+ }
+
+::-webkit-scrollbar-thumb {
+    background: var(--lines);
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar {
+    background: transparent;
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-corner { 
+    display: none; 
+}
+

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="color-scheme" content="dark light">
+    <title></title>
+    <script>
+
+        const {ipcRenderer} = require('electron')
+
+        function send_find_request(){
+            let finder_input = document.querySelector('#finder input')
+            ipcRenderer.send('find', finder_input.value)
+            finder.setAttribute('detail', '')
+        }
+
+        addEventListener('load', function() {
+            let finder_input = document.querySelector('#finder input')
+            finder_input.focus()
+            finder_input.addEventListener('input', send_find_request)
+            finder_input.addEventListener('keydown', async function(e) {
+                if(e.key === 'Enter') {
+                    send_find_request()
+                }
+                if(e.key === 'Escape') {
+                    finder_input.select()
+                    ipcRenderer.send('close_finder')
+                }
+            })
+        })
+
+        document.addEventListener("visibilitychange", function() {
+          if (document.visibilityState === 'visible') {
+            send_find_request()
+          } 
+        })
+
+        ipcRenderer.on('found', (event, result) => {
+            let finder = document.querySelector('#finder')
+            finder.setAttribute('detail', result.activeMatchOrdinal + '/' + result.matches)
+        })
+
+    </script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        html, body{
+            background: transparent;
+            font-family: sans-serif;
+        }
+
+        #finder{
+            padding: 10px;
+            box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.2);
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            margin: 0 10px 10px 10px;
+            overflow: auto
+        }
+
+        #finder input{
+            background: transparent;
+            outline: none;
+            border: 0;
+            width: 70%;
+            height: 20px;
+            float: left;
+        }
+
+        #finder:after{
+            content: attr(detail);
+            font-size: 75%;
+            width: 30%;
+            text-align: right;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="finder" detail="" spellcheck="false"><input /></div>
+</body>
+</html>

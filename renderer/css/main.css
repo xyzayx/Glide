@@ -1,0 +1,307 @@
+@media screen and (orientation:portrait) {
+    .area{
+        column-count: 1 !important;
+    }
+}
+#wrap{
+    display: flex;
+    min-height: -webkit-fill-available;
+}
+
+#results-dummy{
+    min-width: var(--results-width);
+    min-height: 100%;
+}
+#dragger{
+    min-width: 5px;
+    min-height: 100%;
+    background: var(--logger-bg);
+    cursor: col-resize;
+}
+
+.CodeMirror {
+    height: auto !important;
+}
+
+::selection {
+    background: var(--highlight);
+}
+
+*:focus {
+    outline: none;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body { 
+    /*height: fit-content;*/
+    min-width: fit-content;
+    padding: 0;
+    margin: 0;
+    background: var(--bg);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    color: var(--text);
+    height: -webkit-fill-available;
+    min-width: -webkit-fill-available;
+}
+
+.hidden{
+    display: none !important;
+}
+
+.generic img{
+    max-width: 100%;
+}
+.generic a{
+    color: var(--link);
+}
+a[name]{
+    font-weight: bold;
+    color: var(--text);
+}
+/*--------------------------------------------------------------------------------------*/
+
+#main{
+    margin: 0 auto;
+    height: fit-content;
+    overflow: auto;
+}
+
+#content{
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    /*padding: 0 30px;*/
+}
+
+/*--------------------------------------------------------------------------------------*/
+
+.area{
+    width: var(--default-area-width);
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: var(--font-size);
+    outline: none;
+    margin: 0 auto;
+}
+
+.area.program[info]::before{
+    margin: 0 10px;
+}
+
+.area[info]::before{
+    content: attr(info);
+    font-size: var(--code-font-size);
+    font-family: var(--code-font-family);
+    color: var(--lines);
+    display: block; 
+    padding: 10px 0;
+    border-top: 1px solid var(--lines);
+    column-span: all /* else it only sits atop the first column breaking the look.*/
+}
+
+.area[info]:first-child::before{
+    border-top:  none;
+}
+
+.area[info]:last-child:after {
+    border-bottom: 1px solid var(--lines);
+    content: "\A";
+    display: block;
+    padding-top: 10px;
+}
+
+.hidden + .area {
+    
+}
+
+.hidden + .area:before {
+    content: "⋯\A\A";
+    white-space: pre;
+    font-family: serif;
+    min-width: min(100%, calc(var(--default-area-width)) - var(--code-indent));
+    width: min(100%, calc(var(--default-area-width)) - var(--code-indent));
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    max-height: 30px;
+}
+
+.hidden + .program.area:before {
+    padding: 0 0 0 20px;
+}
+
+.generic div{
+    font-size: inherit; /*so the pasted text actually changes font size in accordance with main div*/
+}
+.program + .program{
+    /*border-top: 1px solid var(--lines);*/
+    margin-top: 5px;
+    background: linear-gradient(to right, transparent var(--code-indent), var(--lines) var(--code-indent), var(--lines) calc( 100% - 10px ), transparent calc( 100% - 10px )) 0px 0% / 100% 1px no-repeat, var(--bg);
+}
+.program[info]{
+    /*border-top: 1px solid var(--lines);*/
+    margin-top: 0 !important;
+    background: none !important;
+}
+
+.prog {
+    /* offscreen*/
+    width: var(--default-area-width);
+    box-sizing: border-box;
+    outline: none;
+    margin: 0 auto;
+}
+.monospace{
+    font-family: var(--code-font-family);
+}
+/*-------------------------------------*/
+.program{
+    background: var(--code-bg);
+    /*min-width: 100%;*/ /* no longer need band like code area, so commenting out */
+    /*max-width: 100%; */ /* creates problems in firefox mobile */
+    font-family: var(--code-font-family);
+    padding: 10px 0;
+}
+
+.section{
+    width: min(100%, calc(var(--default-area-width)) - var(--code-indent));
+    border-left: 2px solid var(--bg) !important;
+}
+
+.gutters-shown .CodeMirror{
+    padding-left: 10px;
+}
+.CodeMirror{
+    padding-left: 15px;
+    margin-left: var(--code-indent);
+    border-left: 2px solid var(--bg);
+}
+
+.area[async="true"] > div.CodeMirror {
+    border-left: 2px dashed;
+    border-left-color: var(--lines);
+}
+
+.program[mark] > div.CodeMirror{
+    border-left: 2px solid;
+    border-left-color: var(--code-text);
+}
+
+.program[mark].area[async="true"] > div.CodeMirror{
+   border-left: 2px dashed;
+}
+
+.code{
+    font-family: var(--code-font-family);
+    font-size: var(--code-font-size);
+    line-height: var(--code-line-height);
+    width: var(--default-area-width);
+    margin: 0 auto;
+}
+
+/*--------------------------------------------------------------------------------------*/
+.program[mark] > div.CodeMirror[mgroup-class-name="1"]{
+    border-left-color: var(--mark-group-color1) !important;
+}
+
+.program[mark] > div.CodeMirror[mgroup-class-name="2"]{
+    border-left-color: var(--mark-group-color2) !important;
+}
+
+.program[mark] > div.CodeMirror[mgroup-class-name="3"]{
+    border-left-color: var(--mark-group-color3) !important;
+}
+
+.program[mark] > div.CodeMirror[mgroup-class-name="4"]{
+    border-left-color: var(--mark-group-color4) !important;
+}
+
+.program[mark] > div.CodeMirror[mgroup-class-name="5"]{
+    border-left-color: var(--mark-group-color5) !important;
+}
+
+.program[mark] > div.CodeMirror[mgroup-class-name="6"]{
+    border-left-color: var(--mark-group-color6) !important;
+}
+
+.program[mark] > div.CodeMirror[mgroup-class-name="7"]{
+    border-left-color: var(--mark-group-color7) !important;
+}
+
+.program[mark] > div.CodeMirror[mgroup-class-name="8"]{
+    border-left-color: var(--mark-group-color8) !important;
+}
+
+.program[mark] > div.CodeMirror[mgroup-class-name="9"]{
+    border-left-color: var(--mark-group-color0) !important;
+}
+
+/*--------------------------------------------------------------------------------------*/
+.result.sticky{
+    position: fixed;
+    bottom: 35px;
+    /*width: 100%;*/
+    background: var(--bg);
+    z-index: 10;
+    box-shadow: rgb(0 0 0 / 50%) 0 0 20px;
+    /*padding-top: 5px;*/
+    max-height: 50px;
+    min-height: 50px;
+    height: 50px;
+    overflow: auto;
+    padding-bottom: 10px;
+    margin: 0;
+}
+/*--------------------------------------------------------------------------------------*/
+
+pre{
+    white-space: pre-wrap;
+}
+
+/*--------------------------------------------------------------------------------------*/
+
+#log{
+    width: 100%;
+    height: 35px;
+    position: fixed;
+    bottom: 0;
+    margin: 0 auto;
+    font-size: var(--small-font-size);
+    background: var(--logger-bg);
+    z-index: 18;
+    overflow: auto;
+    font-family: var(--code-font-family);
+}
+
+#log div{
+    display: block;
+    width: 100%;
+    height: fit-content;
+    padding: 7px;
+    color: var(--logger-text);
+    line-height: 1.5em;
+}
+#log div.hidden{
+    display: none;
+}
+
+#log.expanded{
+    height: fit-content;
+    max-height: 50vh;
+    min-height: 70px;
+}
+
+/*--------------------------------------------------------------------------------------*/
+
+#page-padding{
+    width: 100%;
+    height: 86.5vh;
+}
+
+/*--------------------------------------------------------------------------------------*/

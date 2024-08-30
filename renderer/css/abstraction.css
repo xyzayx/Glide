@@ -1,0 +1,62 @@
+/* Using Zenburn as a template, i wrote bits on top that i needed. the rest are commented out so that they can be used as reference if needed. Why zenburn? -  i liked how the rules were written, in a tight one line manner, making it easy to read and mod. and its minimal. I'm keepin the original header even below. Because i dont think this is done yet and will need more modification as i go along and when i feel its stable enough then i can clean it up.*/
+
+/**
+ * "
+ *  Using Zenburn color palette from the Emacs Zenburn Theme
+ *  https://github.com/bbatsov/zenburn-emacs/blob/master/zenburn-theme.el
+ *
+ *  Also using parts of https://github.com/xavi/coderay-lighttable-theme
+ * "
+ * From: https://github.com/wisenomad/zenburn-lighttable-theme/blob/master/zenburn.css
+ */
+
+.cm-s-abstraction .CodeMirror-gutters { background-color: var(--bg); opacity: 0.075; border: none; padding-right: 5px;}
+.cm-s-abstraction .CodeMirror-linenumber{ color: var(--code-comment); opacity: 0.6;} /* line number in gutter*/
+/*.cm-s-abstraction .CodeMirror-foldgutter-open, .CodeMirror-foldgutter-folded { color: #999; }*/
+.cm-s-abstraction .CodeMirror-cursor { border-left: 2px solid var(--code-caret); }
+.cm-s-abstraction.CodeMirror { 
+    background-color: var(--code-bg); 
+    color: var(--code-text); 
+    font-family: var(--code-font-family);
+    font-size: var(--code-font-size);
+    line-height: var(--code-line-height);
+    /*margin: 0 auto;*/
+    width: min(100%, calc(var(--default-area-width)) - var(--code-indent));
+}
+.cm-s-abstraction .cm-delimit{font-weight: bold;}
+.cm-s-abstraction .CodeMirror-hscrollbar, 
+.cm-s-abstraction .CodeMirror-vscrollbar{
+    background-color: var(--code-bg-trans);
+    opacity: 0.25;
+}
+/*.cm-s-abstraction span.cm-builtin { color: #dcdccc; font-weight: bold; }*/
+.cm-s-abstraction span.cm-comment { color: var(--code-comment); }
+/*.cm-s-abstraction span.cm-keyword { color: #f0dfaf; font-weight: bold; }*/
+/*.cm-s-abstraction span.cm-atom { color: #bfebbf; }*/
+.cm-s-abstraction span.cm-def { color: var(--code-name); }
+/*.cm-s-abstraction span.cm-variable { color: var(--abs-yellow); }*/
+.cm-s-abstraction span.cm-variable-3 { color: var(--code-global-var); }
+.cm-s-abstraction span.cm-string { color: var(--code-string); }
+/*.cm-s-abstraction span.cm-string-2 { color: #cc9393; }*/
+.cm-s-abstraction span.cm-number { color: var(--code-number); }
+/*.cm-s-abstraction span.cm-tag { color: #93e0e3; }*/
+/*.cm-s-abstraction span.cm-property { color: #dfaf8f; }*/
+/*.cm-s-abstraction span.cm-attribute { color: #dfaf8f; }*/
+/*.cm-s-abstraction span.cm-qualifier { color: #7cb8bb; }*/
+/*.cm-s-abstraction span.cm-meta { color: #f0dfaf; }*/
+/*.cm-s-abstraction span.cm-header { color: #f0efd0; }*/
+/*.cm-s-abstraction span.cm-operator { color: #f0efd0; }*/
+.cm-s-abstraction .CodeMirror-matchingbracket { color: var(--code-text) !important; }
+.cm-s-abstraction span.CodeMirror-matchingbracket {box-sizing: border-box; background: transparent; border-bottom: 1px solid var(--code-caret); }
+/*.cm-s-abstraction span.CodeMirror-nonmatchingbracket { border-bottom: 1px solid; background: none; }*/
+/*.cm-s-abstraction .CodeMirror-activeline { background: #000000; }*/
+/*.cm-s-abstraction .CodeMirror-activeline-background { background: #000000; }*/
+.cm-s-abstraction div.CodeMirror-selected { background:  var(--code-selection); }
+/*.cm-s-abstraction .CodeMirror-focused div.CodeMirror-selected { background: #4f4f4f; }*/
+.CodeMirror-wrap pre {word-break: break-word !important;}
+.CodeMirror-hints{padding: 0 !important; margin-left: -5px !important}
+.CodeMirror-hint{
+    padding: 3px 5px 3px 5px !important;
+    font-family: var(--code-font-family) !important;
+    font-size: var(--code-font-size)  !important;
+}

@@ -17,11 +17,11 @@
     "@electron-forge/maker-deb": "^6.0.4",
     "@electron-forge/maker-rpm": "^6.0.4",
     "@electron-forge/maker-squirrel": "^6.0.4",
-    "@electron-forge/maker-zip": "^6.0.4",
-    "electron": "^22.0.0"
+    "@electron-forge/maker-zip": "^6.0.4"
   },
   "dependencies": {
     "codemirror": "^5.65.2",
+    "electron": "^32.0.1",
     "electron-context-menu": "*",
     "electron-squirrel-startup": "^1.0.0",
     "escodegen": "^2.0.0",

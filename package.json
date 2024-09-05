@@ -13,6 +13,7 @@
   "author": "Varun A",
   "license": "SEE LICENSE IN LICENSE.txt",
   "devDependencies": {
+    "electron": "^32.0.1",
     "@electron-forge/cli": "^6.0.4",
     "@electron-forge/maker-deb": "^6.0.4",
     "@electron-forge/maker-rpm": "^6.0.4",

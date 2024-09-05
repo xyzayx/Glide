@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { SpawnOptions } from 'child_process';
 export interface SpawnResult {
     code: number | null;

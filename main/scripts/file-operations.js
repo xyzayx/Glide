@@ -5,8 +5,6 @@ const fs = require('fs')
 
 var config = require('./config')
 
-const contextMenu = require('electron-context-menu')
-
 // For some reason Browserview doesnt have an inspectElement function.
 // From https://github.com/electron/electron/blob/44491b023ac2653538b7ac36bb73f3085a938666/lib/browser/api/browser-window.ts you can see line 134 essentially aliases the webcontents inspectElement to the browserWindow prototype.
 // I need this function on the browserView prototype because electron-context-menu expects inspectelement function on the window that is passed to it whether it is a browserview or a browserwindow. See https://github.com/sindresorhus/electron-context-menu/blob/798b616103a950c8d72dee3a9ad4c951a33b90f7/index.js
@@ -53,7 +51,13 @@ function create_window() {
     new_win_opts.y = pos[1] + 20
   }
   const win = new BrowserWindow(new_win_opts)
-  win.on('close', handle_closing)
+  win.on('close', e => {e.sender = win; 
+    try{
+      handle_closing(e)
+    }catch(err){
+      console.log(err)
+    }
+  })
   win.loadFile('./renderer/index.html') 
 
   if (!app.isPackaged){// development
@@ -94,7 +98,7 @@ function create_window() {
 const add_results_view = exports.add_results_view = (win) => {
     const results = new BrowserView({webPreferences: WEB_PREFS})
     win.addBrowserView(results)
-    contextMenu({window: results, showInspectElement: true})
+    import('electron-context-menu').then(ctx => ctx.default({window: results, showInspectElement: true}))
     win.results = results
     win.top_browser_view = results
 }

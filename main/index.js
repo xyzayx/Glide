@@ -6,8 +6,7 @@ process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 const {Menu, app, BrowserWindow, BrowserView, ipcMain} = require('electron')
 const gen_ops = require('./scripts/general-operations.js')
 
-const contextMenu = require('electron-context-menu')
-contextMenu()
+import('electron-context-menu').then(ctx => ctx.default())
 
 let app_opened_with_filepath = false
 
@@ -315,3 +314,15 @@ ipcMain.on('viewport-resized', (e, width, height) => {
     }
   }
 })
+
+// Catch uncaught exceptions and log them without showing a dialog
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught Exception:', error);
+  // Optionally, you can add logic here to safely close the app, or ignore this error.
+});
+
+// Catch unhandled promise rejections and log them
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Promise Rejection:', reason);
+  // Optionally, handle the promise rejection more gracefully if needed.
+});
